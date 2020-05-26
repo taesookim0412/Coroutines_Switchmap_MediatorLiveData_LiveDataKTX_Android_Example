@@ -14,9 +14,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /*val testViewModel:TestViewModel = ViewModelProvider(this).get(TestViewModel::class.java)*/
-        val testViewModel:TestViewModel by viewModels()
+        /*val testViewModel:TestViewModel by viewModels()
         Log.d("val", testViewModel.coroutineData.value.toString())
-        testViewModel.subscribeData.observe(this, Observer { unit-> unit })
+        testViewModel.subscribeData.observe(this, Observer { unit-> unit })*/
+
+        //Switchmap
+        val switchMapViewModel by viewModels<SwitchmapViewModel>()
+        switchMapViewModel.switchMap.observe(this, Observer{data1 ->
+            println("This pair is a good one")
+            println(data1)
+        })
+
     }
 }
